@@ -134,6 +134,46 @@ Test Airfoils: Validate on unseen geometries from design space
 CFD Comparison: Compare against Ansys Fluent SST k-omega simulations
 
 ---
+References 
+1. Drela, M. (1989). "XFOIL: An Analysis and Design System for Low Reynolds Number Airfoils." In *Low Reynolds Number Aerodynamics*, Springer. [DOI: 10.1007/978-3-642-84010-4_1](https://doi.org/10.1007/978-3-642-84010-4_1)
+
+2. Drela, M., & Youngren, H. (2001). "XFOIL 6.94 User Guide." MIT Aero & Astro.
+
+3. Teimourian, A., Yildiz, M., Rohacs, D., & Kale, U. (2024). "Airfoil aerodynamic performance prediction using machine learning and surrogate modeling." *Aerospace Science and Technology*. [DOI: 10.1016/j.ast.2024.109234](https://doi.org/10.1016/j.ast.2024.109234)
+
+4. Du, X., He, P., & Martins, J. R. R. A. (2022). "Rapid airfoil design optimization via neural networks-based parameterization and surrogate modeling." *Aerospace Science and Technology*, 126, 107634. [DOI: 10.1016/j.ast.2022.107634](https://doi.org/10.1016/j.ast.2022.107634)
+
+5. Kulfan, B. M. (2008). "Universal Parametric Geometry Representation Method." *Journal of Aircraft*, 45(1), 142-158. [DOI: 10.2514/1.29958](https://doi.org/10.2514/1.29958)
+
+6. Kulfan, B. M., & Bussoletti, J. E. (2006). "Fundamental Parametric Geometry Representations for Aircraft Component Shapes." *AIAA Paper 2006-6948*. [DOI: 10.2514/6.2006-6948](https://doi.org/10.2514/6.2006-6948)
+
+7. McKay, M. D., Beckman, R. J., & Conover, W. J. (1979). "A Comparison of Three Methods for Selecting Values of Input Variables in the Analysis of Output from a Computer Code." *Technometrics*, 21(2), 239-245. [DOI: 10.2307/1268522](https://doi.org/10.2307/1268522)
+
+8. Paulete-Periáñez, C., Andrés-Pérez, E., & Lozano, C. (2023). "Surrogate modelling for aerodynamic coefficients prediction in aeronautical configurations." *Aerospace Science and Technology*, 139, 108385. [DOI: 10.1016/j.ast.2023.108385](https://doi.org/10.1016/j.ast.2023.108385)
+
+9. Berger, M., Pellegrini, S., Senfter, T., & Pillei, M. (2023). "AI-driven prediction of aerodynamic coefficients using VAE-GAN and MLP models for 2D airfoils." *Aerospace Science and Technology*. [DOI: 10.1016/j.ast.2023.108569](https://doi.org/10.1016/j.ast.2023.108569)
+
+10. Rasmussen, C. E., & Williams, C. K. I. (2006). *Gaussian Processes for Machine Learning*. MIT Press.
+
+11. Chen, T., & Guestrin, C. (2016). "XGBoost: A Scalable Tree Boosting System." *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*, 785-794. [DOI: 10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785)
+
+12. Breiman, L. (2001). "Random Forests." *Machine Learning*, 45(1), 5-32. [DOI: 10.1023/A:1010933404324](https://doi.org/10.1023/A:1010933404324)
+
+13. Prokhorenkova, L., Gusev, G., Vorobev, A., Dorogush, A. V., & Gulin, A. (2018). "CatBoost: Unbiased Boosting with Categorical Features." *Advances in Neural Information Processing Systems*, 31, 6638-6648.
+
+14. Pedregosa, F., et al. (2011). "Scikit-learn: Machine Learning in Python." *Journal of Machine Learning Research*, 12, 2825-2830.
+
+15. XGBoost Developers. (2023). "XGBoost Documentation." [https://xgboost.readthedocs.io/](https://xgboost.readthedocs.io/)
+
+16. CatBoost Developers. (2023). "CatBoost Documentation." [https://catboost.ai/docs/](https://catboost.ai/docs/)
+
+17. Scikit-learn Developers. (2023). "Scikit-learn Documentation." [https://scikit-learn.org/stable/](https://scikit-learn.org/stable/)
+
+18. Menter, F. R. (1994). "Two-Equation Eddy-Viscosity Turbulence Models for Engineering Applications." *AIAA Journal*, 32(8), 1598-1605. [DOI: 10.2514/3.12149](https://doi.org/10.2514/3.12149)
+
+19. Menter, F. R., Kuntz, M., & Langtry, R. (2003). "Ten Years of Industrial Experience with the SST Turbulence Model." *Turbulence, Heat and Mass Transfer*, 4, 625-632.
+
+---
 
 Requirements
 
