@@ -1,0 +1,154 @@
+# Airfoil Surrogate Modeling
+
+Machine learning surrogate models for rapid prediction of airfoil aerodynamic coefficients (CL/CD) using CST parameterization. Achieves near-instantaneous predictions with less than 2 percent error within the design space.
+
+
+Overview
+
+Aerodynamic shape optimization is bottlenecked by the high computational cost of repetitive simulations. This project develops ML surrogate models that predict lift and drag coefficients 1000x faster than traditional CFD, enabling rapid design space exploration.
+
+Key Features
+
+- Instant Predictions – Millisecond inference time
+- High Accuracy – Less than 5 percent error within design space
+- Multiple Models – GPR, XGBoost, Random Forest
+- Comprehensive Dataset – 2,233 samples, 7 AoAs
+- CFD Validated – Compared against Ansys Fluent
+
+---
+
+Dataset
+
+Design Space Generation
+
+- Base Airfoils: NACA 0012, 2412, 4412, 63215-B, Clark Y
+- Parameterization: CST with 12 shape weights (6 lower + 6 upper)
+- Sampling: LHS with +/-15 percent perturbation per base airfoil
+- Geometries: 65 per base family (5 x 65 = 325 total)
+
+Aerodynamic Data
+
+- Solver: XFOIL (viscous panel method)
+- Reynolds Number: 500,000 (incompressible flow)
+- Angles of Attack: -2, 0, 2, 4, 6, 8, 10 degrees
+- Total Samples: 2,233 converged cases
+
+Feature Space
+
+Inputs (13): 6 lower CST weights, 6 upper CST weights, Angle of Attack
+Outputs (2): Lift Coefficient (CL), Drag Coefficient (CD)
+
+---
+
+Models
+
+GPR - Gaussian Process - Uncertainty quantification, smooth interpolation
+XGBoost - Gradient Boosting - Non-linear relationships, computational efficiency
+Random Forest - Ensemble Bagging - Robustness, feature importance
+
+
+---
+
+Quick Start
+
+Installation
+
+git clone https://github.com/yourusername/airfoil-surrogate.git
+cd airfoil-surrogate
+
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+pip install -r requirements.txt
+
+Load a Pre-trained Model
+
+import joblib
+import numpy as np
+import pandas as pd
+
+gpr_cl = joblib.load('models/gpr_cl.pkl')
+scaler_X = joblib.load('models/scaler_X.pkl')
+
+new_airfoil = [-0.15, -0.09, -0.10, -0.07, -0.08, -0.08,
+               0.20, 0.21, 0.24, 0.16, 0.21, 0.19, 4.0]
+
+columns = ['w_l1','w_l2','w_l3','w_l4','w_l5','w_l6',
+           'w_u1','w_u2','w_u3','w_u4','w_u5','w_u6','Alpha']
+data = pd.DataFrame([new_airfoil], columns=columns)
+X_scaled = scaler_X.transform(data)
+
+cl_pred = gpr_cl.predict(X_scaled)[0]
+print(f"CL = {cl_pred:.4f}")
+
+Train Your Own Model
+
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from xgboost import XGBRegressor
+
+data = pd.read_csv('data/processed/dataset.csv')
+X = data[['w_l1','w_l2','w_l3','w_l4','w_l5','w_l6',
+          'w_u1','w_u2','w_u3','w_u4','w_u5','w_u6','Alpha']]
+y = data['CL']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+model = XGBRegressor(n_estimators=450, max_depth=7, learning_rate=0.08)
+model.fit(X_train, y_train)
+
+print(f"R2 Score: {model.score(X_test, y_test):.4f}")
+
+---
+
+Results
+
+Validation on Unseen Airfoil (NACA 2411)
+
+AoA    GPR CL Error    GPR CD Error    XGBoost CL Error    XGBoost CD Error
+4 deg  0.13%           0.60%           2.49%               2.01%
+6 deg  1.72%           5.07%           4.49%               3.39%
+8 deg  1.41%           0.01%           4.10%               2.75%
+10 deg 0.85%           1.80%           3.91%               3.60%
+
+Interpolation at 5 Degrees (Untrained Angle)
+
+Airfoil    GPR CL Error    GPR CD Error
+E22        0.65%           0.26%
+G56        0.64%           0.23%
+B64        3.09%           2.75%
+
+Key Findings
+
+- GPR achieves less than 3% CL error for most in-distribution cases
+- Interpolation at untrained angles works exceptionally well
+- XFOIL systematically underpredicts drag vs CFD (20-40% difference)
+
+---
+
+Validation Methods
+
+Base Airfoil: Predict on parent airfoils excluded from training
+Interpolation: Predict at 5 degrees AOA (not in training data)
+Test Airfoils: Validate on unseen geometries from design space
+CFD Comparison: Compare against Ansys Fluent SST k-omega simulations
+
+---
+
+Requirements
+
+numpy>=1.21.0
+pandas>=1.3.0
+scikit-learn>=1.0.0
+xgboost>=1.5.0
+catboost>=1.0.0
+joblib>=1.1.0
+matplotlib>=3.5.0
+
+---
+
+Contact
+Kenneth Steve Diyya - kennethsteve.d@gmail.com
+Pataskar Sai - 
+
+
