@@ -134,6 +134,7 @@ Test Airfoils: Validate on unseen geometries from design space
 CFD Comparison: Compare against Ansys Fluent SST k-omega simulations
 
 ---
+
 References 
 
 1. Drela, M. (1989). "XFOIL: An Analysis and Design System for Low Reynolds Number Airfoils." In *Low Reynolds Number Aerodynamics*, Springer. [DOI: 10.1007/978-3-642-84010-4_1](https://doi.org/10.1007/978-3-642-84010-4_1)
