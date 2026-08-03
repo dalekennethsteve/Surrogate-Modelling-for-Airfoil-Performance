@@ -1,4 +1,4 @@
-# Airfoil Surrogate Modeling
+Airfoil Surrogate Modeling
 
 Machine learning surrogate models for rapid prediction of airfoil aerodynamic coefficients (CL/CD) using CST parameterization. Achieves near-instantaneous predictions with less than 2 percent error within the design space.
 
@@ -53,7 +53,7 @@ Quick Start
 
 Installation
 
-git clone https://github.com/yourusername/airfoil-surrogate.git
+git clone https://github.com/dalekennethsteve/Surrogate-Modelling-for-Airfoil-Performance.git
 cd airfoil-surrogate
 
 python -m venv venv
@@ -149,6 +149,6 @@ matplotlib>=3.5.0
 
 Contact
 Kenneth Steve Diyya - kennethsteve.d@gmail.com
-Pataskar Sai - 
+Pataskar Sai - saipataskar2002@gmail.com
 
 
