@@ -101,28 +101,11 @@ print(f"R2 Score: {model.score(X_test, y_test):.4f}")
 
 ---
 
-Results
-
-Validation on Unseen Airfoil (NACA 2411)
-
-AoA    GPR CL Error    GPR CD Error    XGBoost CL Error    XGBoost CD Error
-4 deg  0.13%           0.60%           2.49%               2.01%
-6 deg  1.72%           5.07%           4.49%               3.39%
-8 deg  1.41%           0.01%           4.10%               2.75%
-10 deg 0.85%           1.80%           3.91%               3.60%
-
-Interpolation at 5 Degrees (Untrained Angle)
-
-Airfoil    GPR CL Error    GPR CD Error
-E22        0.65%           0.26%
-G56        0.64%           0.23%
-B64        3.09%           2.75%
-
 Key Findings
 
 - GPR achieves less than 3% CL error for most in-distribution cases
 - Interpolation at untrained angles works exceptionally well
-- XFOIL systematically underpredicts drag vs CFD (20-40% difference)
+- XFOIL systematically underpredicts drag vs CFD due to underlying different system of equations.
 
 ---
 
@@ -131,7 +114,7 @@ Validation Methods
 Base Airfoil: Predict on parent airfoils excluded from training
 Interpolation: Predict at 5 degrees AOA (not in training data)
 Test Airfoils: Validate on unseen geometries from design space
-CFD Comparison: Compare against Ansys Fluent SST k-omega simulations
+CFD Comparison: Compare against Ansys Fluent SST k-omega and SST transport simulations
 
 ---
 
