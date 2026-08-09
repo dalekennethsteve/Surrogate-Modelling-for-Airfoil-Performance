@@ -1,4 +1,4 @@
-Airfoil Surrogate Modeling
+## Airfoil Surrogate Modeling
 
 Machine learning surrogate models for rapid prediction of airfoil aerodynamic coefficients (CL/CD) using CST parameterization. Achieves near-instantaneous predictions with less than 2 percent error within the design space.
 
